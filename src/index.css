@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-app: #fcfbfa; /* Soft celestial off-white */
+  --bg-card: #ffffff; /* Classic white */
+  --bg-secondary: #f6f5f1; /* Light sand grey */
+  --border-custom: #e9e7e2; /* Very light stone */
+  --text-prime: #1c1d21; /* High-contrast charcoal */
+  --text-second: #56585d; /* Dark stone */
+  --text-mute: #8c8e94; /* Light stone grey */
+  --glow-color: rgba(99, 102, 241, 0.04);
+}
+
+.dark {
+  --bg-app: #0b0c10; /* Dark space background */
+  --bg-card: #131520; /* Deep cosmic slate */
+  --bg-secondary: #1a1d2c; /* Midnight celestial grey */
+  --border-custom: #222637; /* Celestial dust blue-grey border */
+  --text-prime: #f1f3f9; /* Near-white */
+  --text-second: #a1a6b4; /* Muted starlight */
+  --text-mute: #626779; /* Midnight shadow grey */
+  --glow-color: rgba(139, 92, 246, 0.12); /* Brighter purple glow for starlight */
+}
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  --color-app-bg: var(--bg-app);
+  --color-card-bg: var(--bg-card);
+  --color-sec-bg: var(--bg-secondary);
+  --color-border-custom: var(--border-custom);
+  --color-text-prime: var(--text-prime);
+  --color-text-second: var(--text-second);
+  --color-text-mute: var(--text-mute);
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-prime);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+/* Beautiful starry backdrop subtle pulse */
+.celestial-glow {
+  background: radial-gradient(circle at 50% 50%, var(--glow-color) 0%, rgba(255, 255, 255, 0) 70%);
+  transition: background 0.3s ease;
+}
+
+.dream-gradient-border {
+  position: relative;
+}
+
+.dream-gradient-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(219, 39, 119, 0.2), rgba(168, 85, 247, 0.4));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
